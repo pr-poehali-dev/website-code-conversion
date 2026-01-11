@@ -121,9 +121,6 @@ const Index = () => {
                 <div className="text-3xl font-bold cosmic-text">
                   {pkg.price.toLocaleString('ru-RU')} ₽
                 </div>
-                <div className="text-xs text-gray-400">
-                  {(pkg.price / pkg.stars).toFixed(2)} ₽ за звезду
-                </div>
                 <Button
                   onClick={() => handleBuyClick(pkg)}
                   className="w-full cosmic-gradient hover:opacity-90 text-white font-bold py-4 rounded-full transition-all duration-300 hover:scale-105 glow-cyan"
