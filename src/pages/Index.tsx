@@ -61,46 +61,46 @@ const Index = () => {
           </p>
         </header>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-20">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mb-20">
           {packages.map((pkg, index) => (
             <Card
               key={pkg.id}
               className={`relative bg-gradient-to-b from-[#1a1a2e] to-[#16213e] border-2 transition-all duration-300 hover:scale-105 hover:glow-cyan animate-fade-in ${
                 pkg.popular ? 'border-[#fc00ff] glow-cyan-strong' : 'border-[#00dbde]'
               }`}
-              style={{ animationDelay: `${index * 0.1}s` }}
+              style={{ animationDelay: `${index * 0.05}s` }}
             >
               {pkg.popular && (
-                <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
-                  <span className="cosmic-gradient px-6 py-2 rounded-full text-sm font-bold text-white">
-                    ПОПУЛЯРНО
+                <div className="absolute -top-3 left-1/2 transform -translate-x-1/2">
+                  <span className="cosmic-gradient px-4 py-1 rounded-full text-xs font-bold text-white">
+                    ХИТ
                   </span>
                 </div>
               )}
-              <CardHeader className="text-center pt-8">
-                <CardTitle className="text-3xl font-bold text-[#00dbde] mb-2">
+              <CardHeader className="text-center pt-6 pb-3">
+                <CardTitle className="text-2xl font-bold text-[#00dbde] mb-1">
                   {pkg.name}
                 </CardTitle>
-                <CardDescription className="text-gray-300 text-lg">
+                <CardDescription className="text-gray-300 text-sm">
                   {pkg.description}
                 </CardDescription>
               </CardHeader>
-              <CardContent className="text-center space-y-6 pb-8">
-                <div className="flex items-center justify-center gap-2 text-4xl font-bold">
-                  <Icon name="Star" className="text-[#FFD700] fill-[#FFD700]" size={32} />
+              <CardContent className="text-center space-y-4 pb-6">
+                <div className="flex items-center justify-center gap-2 text-3xl font-bold">
+                  <Icon name="Star" className="text-[#FFD700] fill-[#FFD700]" size={24} />
                   <span className="text-[#00dbde]">{pkg.stars}</span>
                 </div>
-                <div className="text-4xl font-bold cosmic-text">
+                <div className="text-3xl font-bold cosmic-text">
                   {pkg.price.toLocaleString('ru-RU')} ₽
                 </div>
-                <div className="text-sm text-gray-400">
-                  {Math.round(pkg.price / pkg.stars)} ₽ за звезду
+                <div className="text-xs text-gray-400">
+                  {(pkg.price / pkg.stars).toFixed(2)} ₽ за звезду
                 </div>
                 <Button
                   onClick={() => handleBuyClick(pkg)}
-                  className="w-full cosmic-gradient hover:opacity-90 text-white font-bold text-lg py-6 rounded-full transition-all duration-300 hover:scale-105 glow-cyan"
+                  className="w-full cosmic-gradient hover:opacity-90 text-white font-bold py-4 rounded-full transition-all duration-300 hover:scale-105 glow-cyan"
                 >
-                  Купить сейчас
+                  Купить
                 </Button>
               </CardContent>
             </Card>
