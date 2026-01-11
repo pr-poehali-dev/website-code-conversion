@@ -36,14 +36,42 @@ const Index = () => {
     setIsModalOpen(true);
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    toast({
-      title: '🌟 Заявка принята!',
-      description: `Спасибо, ${formData.name}! Мы свяжемся с вами в течение 24 часов.`,
-    });
-    setIsModalOpen(false);
-    setFormData({ name: '', email: '', starName: '' });
+    
+    try {
+      const response = await fetch('https://functions.poehali.dev/754c0099-c68c-4de4-a395-1b23208ea14b', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          packageName: selectedPackage?.name,
+          price: selectedPackage?.price,
+          customerName: formData.name,
+          customerEmail: formData.email,
+          starName: formData.starName,
+        }),
+      });
+
+      const data = await response.json();
+
+      if (response.ok && data.paymentUrl) {
+        window.location.href = data.paymentUrl;
+      } else {
+        toast({
+          title: 'Ошибка',
+          description: 'Не удалось создать платёж. Попробуйте позже.',
+          variant: 'destructive',
+        });
+      }
+    } catch (error) {
+      toast({
+        title: 'Ошибка',
+        description: 'Произошла ошибка при создании платежа.',
+        variant: 'destructive',
+      });
+    }
   };
 
   return (

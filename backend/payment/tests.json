@@ -1,0 +1,26 @@
+{
+  "tests": [
+    {
+      "name": "Create payment link",
+      "method": "POST",
+      "body": {
+        "packageName": "100 звезд",
+        "price": 150,
+        "customerName": "Иван",
+        "customerEmail": "test@example.com",
+        "starName": "Моя Звезда"
+      },
+      "expectedStatus": 200,
+      "expectedBody": {
+        "paymentUrl": "string",
+        "orderId": "string"
+      },
+      "bodyMatcher": "partial"
+    },
+    {
+      "name": "OPTIONS request",
+      "method": "OPTIONS",
+      "expectedStatus": 200
+    }
+  ]
+}
