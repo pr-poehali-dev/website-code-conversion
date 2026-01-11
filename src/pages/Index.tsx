@@ -17,30 +17,18 @@ const Index = () => {
   const { toast } = useToast();
 
   const packages = [
-    {
-      id: 1,
-      name: 'Одна звезда',
-      stars: 1,
-      price: 1990,
-      description: 'Именная звезда с сертификатом',
-      popular: false,
-    },
-    {
-      id: 2,
-      name: 'Созвездие',
-      stars: 5,
-      price: 7990,
-      description: '5 звёзд с координатами',
-      popular: true,
-    },
-    {
-      id: 3,
-      name: 'Галактика',
-      stars: 10,
-      price: 14990,
-      description: '10 звёзд + карта неба',
-      popular: false,
-    },
+    { id: 1, name: '50 звезд', stars: 50, price: 78, description: 'Стартовый пакет', popular: false },
+    { id: 2, name: '100 звезд', stars: 100, price: 150, description: 'Базовый пакет', popular: false },
+    { id: 3, name: '150 звезд', stars: 150, price: 220, description: 'Популярный выбор', popular: true },
+    { id: 4, name: '250 звезд', stars: 250, price: 350, description: 'Расширенный пакет', popular: false },
+    { id: 5, name: '500 звезд', stars: 500, price: 680, description: 'Премиум пакет', popular: false },
+    { id: 6, name: '750 звезд', stars: 750, price: 1010, description: 'VIP пакет', popular: false },
+    { id: 7, name: '1000 звезд', stars: 1000, price: 1350, description: 'Максимум выгоды', popular: true },
+    { id: 8, name: '1500 звезд', stars: 1500, price: 2000, description: 'Элитный пакет', popular: false },
+    { id: 9, name: '2500 звезд', stars: 2500, price: 3350, description: 'Платиновый пакет', popular: false },
+    { id: 10, name: '5000 звезд', stars: 5000, price: 6650, description: 'Бриллиантовый пакет', popular: false },
+    { id: 11, name: '10000 звезд', stars: 10000, price: 13250, description: 'Космический пакет', popular: true },
+    { id: 12, name: '25000 звезд', stars: 25000, price: 33100, description: 'Галактический пакет', popular: false },
   ];
 
   const handleBuyClick = (pkg: any) => {
