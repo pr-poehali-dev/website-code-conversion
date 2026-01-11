@@ -331,7 +331,7 @@ const Index = () => {
           </div>
         </div>
       )}
-    </div>
+    </Fragment>
   );
 };
 
