@@ -107,6 +107,70 @@ const Index = () => {
           ))}
         </div>
 
+        <div className="max-w-6xl mx-auto mb-20 animate-fade-in">
+          <h2 className="text-4xl font-bold text-center cosmic-text mb-12 flex items-center justify-center gap-3">
+            <Icon name="MessageCircle" size={36} />
+            Отзывы клиентов
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {[
+              {
+                name: 'Димон 🍋',
+                text: 'Спасибо за звёзды всё быстро без задержек',
+                rating: 5,
+              },
+              {
+                name: 'Вика',
+                text: '+rep сделал быстро надежно спасибо',
+                rating: 5,
+              },
+              {
+                name: 'the death',
+                text: 'топ номер сразу выдал советую',
+                rating: 5,
+              },
+              {
+                name: 'Янчик',
+                text: 'хороший человек, все быстро, надежна, не обман советую всем',
+                rating: 5,
+              },
+              {
+                name: 'Настюшка что-ли',
+                text: 'покупа номер, все замечательно, невысокие цены, большой ассортимент. не скам. Рекомендую 👏',
+                rating: 5,
+              },
+              {
+                name: 'поша',
+                text: 'все хорошо быстро покупал номер',
+                rating: 5,
+              },
+            ].map((review, index) => (
+              <Card
+                key={index}
+                className="bg-gradient-to-b from-[#1a1a2e] to-[#16213e] border-2 border-[#00dbde]/30 hover:border-[#00dbde] transition-all duration-300 animate-fade-in"
+                style={{ animationDelay: `${index * 0.1}s` }}
+              >
+                <CardContent className="pt-6 space-y-4">
+                  <div className="flex items-center gap-3">
+                    <div className="w-12 h-12 rounded-full bg-gradient-to-br from-[#00dbde] to-[#fc00ff] flex items-center justify-center text-white font-bold text-xl">
+                      {review.name.charAt(0)}
+                    </div>
+                    <div>
+                      <h3 className="font-bold text-[#00dbde]">{review.name}</h3>
+                      <div className="flex gap-1">
+                        {Array.from({ length: review.rating }).map((_, i) => (
+                          <Icon key={i} name="Star" className="text-[#FFD700] fill-[#FFD700]" size={14} />
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                  <p className="text-gray-300 leading-relaxed">{review.text}</p>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+
         <div className="max-w-4xl mx-auto bg-gradient-to-br from-[#1a1a2e] to-[#16213e] rounded-3xl p-8 md:p-12 border-2 border-[#00dbde]/30 glow-cyan mb-12 animate-fade-in">
           <h2 className="text-3xl font-bold text-[#00dbde] mb-6 flex items-center gap-3">
             <Icon name="Rocket" size={32} />
@@ -117,7 +181,7 @@ const Index = () => {
               <span className="cosmic-gradient rounded-full w-8 h-8 flex items-center justify-center font-bold flex-shrink-0">
                 1
               </span>
-              <span>Выберите пакет звёзд и нажмите "Купить сейчас"</span>
+              <span>Выберите пакет звёзд и нажмите "Купить"</span>
             </li>
             <li className="flex gap-4">
               <span className="cosmic-gradient rounded-full w-8 h-8 flex items-center justify-center font-bold flex-shrink-0">
