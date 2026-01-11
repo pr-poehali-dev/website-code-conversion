@@ -13,6 +13,7 @@ const Index = () => {
     name: '',
     email: '',
     starName: '',
+    telegramUsername: '',
   });
   const { toast } = useToast();
 
@@ -48,9 +49,11 @@ const Index = () => {
         body: JSON.stringify({
           packageName: selectedPackage?.name,
           price: selectedPackage?.price,
+          stars: selectedPackage?.stars,
           customerName: formData.name,
           customerEmail: formData.email,
           starName: formData.starName,
+          telegramUsername: formData.telegramUsername,
         }),
       });
 
@@ -318,6 +321,19 @@ const Index = () => {
                   onChange={(e) => setFormData({ ...formData, starName: e.target.value })}
                   className="bg-white/10 border-[#00dbde]/30 text-white placeholder:text-gray-500"
                   placeholder="Моя Звезда"
+                  required
+                />
+              </div>
+              <div className="space-y-2">
+                <Label htmlFor="telegramUsername" className="text-[#00dbde]">
+                  Telegram username
+                </Label>
+                <Input
+                  id="telegramUsername"
+                  value={formData.telegramUsername}
+                  onChange={(e) => setFormData({ ...formData, telegramUsername: e.target.value })}
+                  className="bg-white/10 border-[#00dbde]/30 text-white placeholder:text-gray-500"
+                  placeholder="@username"
                   required
                 />
               </div>

@@ -1,0 +1,21 @@
+{
+  "tests": [
+    {
+      "name": "Test webhook payment notification",
+      "method": "POST",
+      "path": "/",
+      "body": {
+        "notification_type": "p2p-incoming",
+        "label": "{\"email\": \"test@example.com\", \"starName\": \"Test Star\", \"telegram\": \"@testuser\", \"stars\": 100, \"price\": 150}",
+        "amount": 150,
+        "operation_id": "test_operation_123"
+      },
+      "expectedStatus": 200,
+      "expectedBody": {
+        "success": true,
+        "message": "string"
+      },
+      "bodyMatcher": "partial"
+    }
+  ]
+}

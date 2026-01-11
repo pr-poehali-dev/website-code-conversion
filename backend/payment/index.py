@@ -34,9 +34,11 @@ def handler(event: dict, context) -> dict:
         body = json.loads(event.get('body', '{}'))
         package_name = body.get('packageName', '')
         price = body.get('price', 0)
+        stars = body.get('stars', 0)
         customer_name = body.get('customerName', '')
         customer_email = body.get('customerEmail', '')
         star_name = body.get('starName', '')
+        telegram_username = body.get('telegramUsername', '')
         
         receiver = os.environ.get('YOOMONEY_RECEIVER', '')
         
@@ -51,13 +53,22 @@ def handler(event: dict, context) -> dict:
                 'isBase64Encoded': False
             }
         
+        payment_data = {
+            'email': customer_email,
+            'starName': star_name,
+            'telegram': telegram_username,
+            'stars': stars,
+            'price': price
+        }
+        label = json.dumps(payment_data)
+        
         payment_params = {
             'receiver': receiver,
             'quickpay-form': 'shop',
             'targets': f'Покупка {package_name}',
             'paymentType': 'SB',
             'sum': price,
-            'label': f'{customer_email}|{star_name}',
+            'label': label,
             'successURL': 'https://example.com/success'
         }
         
