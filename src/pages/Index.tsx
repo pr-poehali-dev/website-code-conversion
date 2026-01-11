@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import Icon from '@/components/ui/icon';
@@ -168,66 +167,76 @@ const Index = () => {
         </div>
       </div>
 
-      <Dialog open={isModalOpen} onOpenChange={setIsModalOpen}>
-        <DialogContent className="bg-gradient-to-b from-[#1a1a2e] to-[#16213e] border-2 border-[#00dbde] text-white max-w-md">
-          <DialogHeader>
-            <DialogTitle className="text-3xl font-bold cosmic-text">
-              Оформление заказа
-            </DialogTitle>
-            <DialogDescription className="text-gray-300">
-              {selectedPackage?.name} — {selectedPackage?.price.toLocaleString('ru-RU')} ₽
-            </DialogDescription>
-          </DialogHeader>
-          <form onSubmit={handleSubmit} className="space-y-6">
-            <div className="space-y-2">
-              <Label htmlFor="name" className="text-[#00dbde]">
-                Ваше имя
-              </Label>
-              <Input
-                id="name"
-                value={formData.name}
-                onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                className="bg-white/10 border-[#00dbde]/30 text-white placeholder:text-gray-500"
-                placeholder="Иван Иванов"
-                required
-              />
-            </div>
-            <div className="space-y-2">
-              <Label htmlFor="email" className="text-[#00dbde]">
-                Email
-              </Label>
-              <Input
-                id="email"
-                type="email"
-                value={formData.email}
-                onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                className="bg-white/10 border-[#00dbde]/30 text-white placeholder:text-gray-500"
-                placeholder="ivan@example.com"
-                required
-              />
-            </div>
-            <div className="space-y-2">
-              <Label htmlFor="starName" className="text-[#00dbde]">
-                Имя для звезды
-              </Label>
-              <Input
-                id="starName"
-                value={formData.starName}
-                onChange={(e) => setFormData({ ...formData, starName: e.target.value })}
-                className="bg-white/10 border-[#00dbde]/30 text-white placeholder:text-gray-500"
-                placeholder="Моя Звезда"
-                required
-              />
-            </div>
-            <Button
-              type="submit"
-              className="w-full cosmic-gradient hover:opacity-90 text-white font-bold text-lg py-6 rounded-full transition-all duration-300"
+{isModalOpen && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm animate-fade-in" onClick={() => setIsModalOpen(false)}>
+          <div className="relative bg-gradient-to-b from-[#1a1a2e] to-[#16213e] border-2 border-[#00dbde] rounded-3xl p-8 max-w-md w-full mx-4 glow-cyan-strong animate-scale-in" onClick={(e) => e.stopPropagation()}>
+            <button
+              onClick={() => setIsModalOpen(false)}
+              className="absolute top-4 right-4 text-white hover:text-[#fc00ff] transition-colors"
             >
-              Отправить заявку
-            </Button>
-          </form>
-        </DialogContent>
-      </Dialog>
+              <Icon name="X" size={28} />
+            </button>
+            
+            <div className="mb-6">
+              <h2 className="text-3xl font-bold cosmic-text mb-2">
+                Оформление заказа
+              </h2>
+              <p className="text-gray-300">
+                {selectedPackage?.name} — {selectedPackage?.price.toLocaleString('ru-RU')} ₽
+              </p>
+            </div>
+
+            <form onSubmit={handleSubmit} className="space-y-6">
+              <div className="space-y-2">
+                <Label htmlFor="name" className="text-[#00dbde]">
+                  Ваше имя
+                </Label>
+                <Input
+                  id="name"
+                  value={formData.name}
+                  onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                  className="bg-white/10 border-[#00dbde]/30 text-white placeholder:text-gray-500"
+                  placeholder="Иван Иванов"
+                  required
+                />
+              </div>
+              <div className="space-y-2">
+                <Label htmlFor="email" className="text-[#00dbde]">
+                  Email
+                </Label>
+                <Input
+                  id="email"
+                  type="email"
+                  value={formData.email}
+                  onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                  className="bg-white/10 border-[#00dbde]/30 text-white placeholder:text-gray-500"
+                  placeholder="ivan@example.com"
+                  required
+                />
+              </div>
+              <div className="space-y-2">
+                <Label htmlFor="starName" className="text-[#00dbde]">
+                  Имя для звезды
+                </Label>
+                <Input
+                  id="starName"
+                  value={formData.starName}
+                  onChange={(e) => setFormData({ ...formData, starName: e.target.value })}
+                  className="bg-white/10 border-[#00dbde]/30 text-white placeholder:text-gray-500"
+                  placeholder="Моя Звезда"
+                  required
+                />
+              </div>
+              <Button
+                type="submit"
+                className="w-full cosmic-gradient hover:opacity-90 text-white font-bold text-lg py-6 rounded-full transition-all duration-300"
+              >
+                Отправить заявку
+              </Button>
+            </form>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
