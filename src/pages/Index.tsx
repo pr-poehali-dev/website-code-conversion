@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, Fragment } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
@@ -75,8 +75,25 @@ const Index = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-[#0a0a0a] via-[#1a1a2e] to-[#0a0a0a] text-white">
-      <div className="container mx-auto px-4 py-12 md:py-20">
+    <Fragment>
+      <div className="fixed inset-0 overflow-hidden pointer-events-none">
+        {Array.from({ length: 100 }).map((_, i) => (
+          <div
+            key={i}
+            className="absolute bg-white rounded-full animate-twinkle"
+            style={{
+              top: `${Math.random() * 100}%`,
+              left: `${Math.random() * 100}%`,
+              width: `${Math.random() * 3 + 1}px`,
+              height: `${Math.random() * 3 + 1}px`,
+              animationDelay: `${Math.random() * 3}s`,
+              animationDuration: `${Math.random() * 2 + 2}s`,
+            }}
+          />
+        ))}
+      </div>
+      <div className="min-h-screen bg-gradient-to-b from-[#0a0a0a] via-[#1a1a2e] to-[#0a0a0a] text-white relative">
+        <div className="container mx-auto px-4 py-12 md:py-20">
         <header className="text-center mb-16 animate-fade-in">
           <div className="flex items-center justify-center gap-3 mb-4">
             <Icon name="Sparkles" className="text-[#00dbde]" size={48} />
